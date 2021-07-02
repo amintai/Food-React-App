@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable no-unused-vars */
 
-function App() {
+import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch, 
+  Route,
+  Redirect,
+} from "react-router-dom";
+
+import Products from './Components/Products/Products';
+import NavBar from './Components/NavBar/NavBar';
+import Cart from './Components/Cart/Cart';
+import SingleItem from './Components/SingleItem/SingleItem';
+
+import { connect } from 'react-redux'
+
+function App({ currentItem }) {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NavBar />
+
+      <Switch>
+        <Route exact path='/' component={Products}/>
+        <Route exact path='/cart' component={Cart}/>
+        
+        {
+          !currentItem ? (
+            <Redirect to='/' />
+          ) : (
+            <Route exact path='/product/:id' component={SingleItem} />
+          )
+        }
+
+        
+        
+      </Switch>
+      </div>
+      </Router>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    currentItem : state.hotel.currentItem,
+  };
+};
 
-export default App;
+export default connect(mapStateToProps)(App);
