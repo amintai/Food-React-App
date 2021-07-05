@@ -3,6 +3,8 @@ import React , {useState ,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from "./NavBar.module.css";
 import { connect } from 'react-redux'
+import socialMedialAuth  from './../../service/auth'
+import {googleProvider}  from './../../service/authMethods'
 
 
 const NavBar = ( { cart } ) => {
@@ -18,13 +20,20 @@ const NavBar = ( { cart } ) => {
     setCartCount(count)
   }, [cart,cartCount])
 
+  // google login auth is not working i'll look up tommoroww
 
+  // const handleOnClick = async (provider) => {
+  //   const res = await socialMedialAuth(provider)
+  //   console.log(res)
+  // }
+  // <button onClick={() => handleOnClick(googleProvider)}>Google</button> // this line should be in jsx
     return(
         <div className={styles.navbar}>
         <Link to="/">
         <h2 className={styles.navbar__logo}>Food-Corner</h2>
       </Link>
 
+      
       <Link to="/cart">
       <div className={styles.navbar__cart}>
         <h3 className={styles.cart__title}>Cart</h3>

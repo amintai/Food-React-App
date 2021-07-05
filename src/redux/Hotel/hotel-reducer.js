@@ -26,7 +26,8 @@ const hotelReducer = (state = initial_state, action) => {
         const inCart = state.cart.find((item) =>
           item.id === action.payload.id ? true : false
         );
-  
+
+  // if item is in cart then we increment quantity else we will add new qty with respected id
         return {
           ...state,
           cart: inCart
@@ -37,6 +38,8 @@ const hotelReducer = (state = initial_state, action) => {
               )
             : [...state.cart, { ...item, qty: 1 }],
         };
+
+        // remove matched id
       case actionTypes.REMOVE_ITEM_QTY:
         return {
           ...state,

@@ -69,8 +69,5 @@
     background: var(--secondary-color);
     color: var(--light-color);
   }
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
+ 
   

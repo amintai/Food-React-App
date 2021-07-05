@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import styles from './Cart.module.css'
 import CartItem from './CartItem/CartItem'
-
+import { Link } from 'react-router-dom'
 
 const Cart = ({ cart }) => {
     const [totalPrice , setTotalPrice ] = useState(0)
@@ -21,7 +21,7 @@ const Cart = ({ cart }) => {
         setTotalItems(items)
         setTotalPrice(price)
     },[cart , totalItem,totalPrice , setTotalPrice, setTotalItems])
-
+    console.log(cart)
     return(
         <div className={styles.cart}>
       <div className={styles.cart__items}>
@@ -35,9 +35,11 @@ const Cart = ({ cart }) => {
           <span>TOTAL: ({totalItem} items)</span>
           <span>$ {totalPrice}</span>
         </div>
+        <Link to='/checkout'>
         <button className={styles.summary__checkoutBtn}>
-          Proceed To Checkout
+        Proceed To Checkout
         </button>
+        </Link>
       </div>
     </div>
     )
@@ -48,4 +50,5 @@ const mapStateToProps = (state) => {
         cart : state.hotel.cart,
     }
 }
+
 export default connect(mapStateToProps)(Cart)

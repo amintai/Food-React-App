@@ -9,6 +9,7 @@ export const addToCart = (itemId) => {
         }
     }
 }
+
 export const removeFromCart = (itemId) => {
     return {
         type: actionTypes.REMOVE_ITEM_QTY,
@@ -32,5 +33,12 @@ export const loadCurrentItem = (item) => {
     return {
         type: actionTypes.LOAD_CURRENT_ITEM,
         payload : item
+    }
+}
+
+export const checkoutCart = (item) => {
+    return {
+        type: actionTypes.CHECKOUT_CART_ITEMS,
+        payload:item
     }
 }

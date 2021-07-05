@@ -18,14 +18,14 @@ const Products = ({ products }) => {
             const selected = e.target.value
             handleChange(selected)
         }}>
-        <option value='none' selected>Select Menu</option>
-        <option value='pizza'>Pizza
+        <option value='none' selected>✅  Select Menu </option>
+        <option value='pizza'>🍕  Pizza
         </option>
-        <option value='pasta'>Pasta
+        <option value='pasta'>🍝  Pasta
         </option>
-        <option value='icecream'>Ice-Cream
+        <option value='icecream'>🍨  Ice-Cream
         </option>
-        <option value='paneer'>Paneer</option>
+        <option value='paneer'>🥘  Paneer</option>
         </select>
         
         </div>
