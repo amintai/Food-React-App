@@ -1,0 +1,22 @@
+.image , .text{
+    margin-top: 90px
+}
+.heading{
+    font-size: 80px;
+    line-height: 80px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+label{
+    color: #333;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+input{
+    margin-left: 10px;
+    background-color:  #db4a39;
+}
+.text{
+    margin-left: 80px;
+}
+.text-p{
+    color: #622ae8;
+}

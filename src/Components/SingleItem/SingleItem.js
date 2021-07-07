@@ -2,9 +2,13 @@ import React from 'react';
 import styles from './../SingleItem/SingleItem.module.css'
 import { connect } from 'react-redux';
 import { addToCart } from '../../redux/Hotel/hotel-action';
+import NavBar from '../NavBar/NavBar';
+
 
 const SingleItem = ({currentItem, addToCart}) => {
     return(
+      <>
+      <NavBar></NavBar>
         <div className={styles.singleItem}>
       <img
         className={styles.singleItem__image}
@@ -24,6 +28,7 @@ const SingleItem = ({currentItem, addToCart}) => {
         </button>
       </div>
     </div>
+    </>
     )
 }
 

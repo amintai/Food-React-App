@@ -1,4 +1,5 @@
 
+
 import * as actionTypes from './hotel-type';
 
 export const addToCart = (itemId) => {
@@ -39,6 +40,13 @@ export const loadCurrentItem = (item) => {
 export const checkoutCart = (item) => {
     return {
         type: actionTypes.CHECKOUT_CART_ITEMS,
+        payload:item
+    }
+}
+
+export const removeAllItems = (item) => {
+    return{
+        type:actionTypes.REMOVE_ALL_CART,
         payload:item
     }
 }

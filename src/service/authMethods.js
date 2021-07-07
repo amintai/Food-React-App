@@ -1,5 +1,5 @@
-// import firebaseApp from './../Firebase'
+import firebase from './../Firebase'
 
-// const googleProvider =  new firebaseApp.auth.GoogleAuthProvider()
-// export {googleProvider}
+const googleProvider =  new firebase.auth.GoogleAuthProvider()
+export {googleProvider}
 // export default googleProvider

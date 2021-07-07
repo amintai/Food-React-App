@@ -14,20 +14,22 @@ import Cart from './Components/Cart/Cart';
 import SingleItem from './Components/SingleItem/SingleItem';
 import Checkout from './Components/Checkout/Checkout';
 
+
 import { connect } from 'react-redux'
 import Email from './Components/Email/Email';
 import ThankYou from './Components/ThankYou/ThankYou';
+import Login from './Components/Login/Login';
+// <NavBar />
 
 function App({ currentItem }) {
   return (
     <Router>
     <div className="App">
-    <NavBar />
 
       <Switch>
-        <Route exact path='/' component={Products}/>
+        <Route exact path='/' component={Login}/>
         <Route exact path='/cart' component={Cart}/>
-        
+        <Route exact path='/products' component={Products} />
         <Route exact path='/checkout' component={Checkout} />
         <Route exact path='/email' component={Email} />
         <Route exact path='/thanks' component={ThankYou} />
@@ -48,7 +50,7 @@ function App({ currentItem }) {
 }
 const mapStateToProps = (state) => {
   return {
-    currentItem : state.hotel.currentItem,
+    currentItem : state.hotel.currentItem
   };
 };
 

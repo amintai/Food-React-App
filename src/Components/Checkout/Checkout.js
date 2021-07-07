@@ -1,13 +1,16 @@
 import React  from 'react';
 import { useState , useEffect } from 'react';
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import styles from './../Checkout/Checkout.module.css'
 import {Link} from 'react-router-dom';
 import { db } from '../../Firebase';
+import NavBar from '../NavBar/NavBar';
+import { removeAllItems } from '../../redux/Hotel/hotel-action';
 
-const Checkout = ({checkout}) => {
-    console.log('checkout',checkout)
+const Checkout = ({checkoutt,removeAllItems}) => {
+
     const [totalPrice , setTotalPrice ] = useState(0)
+    const [checkout,setCheckout] = useState(checkoutt);
 
     useEffect(() => {
         let price = 0
@@ -16,7 +19,9 @@ const Checkout = ({checkout}) => {
             price += item.qty * item.price
         })
         setTotalPrice(price)
+        
     },[totalPrice , checkout , setTotalPrice])
+
 
    const firebaseData = () => {
         var name = [];
@@ -28,6 +33,7 @@ const Checkout = ({checkout}) => {
             // name.push(item.title)
             // name.push(item.qty)
         })
+
     db.collection('itemSummary').add({
            name:name,
            revenue : totalPrice
@@ -38,9 +44,13 @@ const Checkout = ({checkout}) => {
         .catch((error) => {
             alert('Error',error)
         })
+        
+        
+ 
     }
     return(
         <div>
+        <NavBar></NavBar>
         <h1 className='text-center mt-3 mb-3'>Cart Summary</h1>
         {
             checkout.map((item,index) => (
@@ -59,15 +69,16 @@ const Checkout = ({checkout}) => {
         }
         <h1 className='text-center'>Grand Total :</h1>
 
-        <Link to='/thanks'> <p className='btn btn-primary text-center' onClick={firebaseData}> Pay : {totalPrice} $ </p></Link>
+        <Link to='/thanks'> <p className='btn btn-primary text-center' onClick={()=> removeAllItems(),firebaseData}> Pay : {totalPrice} $ </p></Link>
         </div>
         )
 }
 
 const mapStateToProps = (state) => {
     return{
-        checkout : state.hotel.cart
+        checkoutt : state.hotel.cart,
     }
 }
 
-export default connect(mapStateToProps)(Checkout)
+
+export default connect(mapStateToProps )(Checkout)

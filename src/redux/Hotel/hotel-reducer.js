@@ -13,6 +13,7 @@ currentItem : null
 
 const hotelReducer = (state = initial_state, action) => {
     switch (action.type) {
+    
       case actionTypes.ADD_TO_CART:
         // Great Item data from products array
 
@@ -20,6 +21,8 @@ const hotelReducer = (state = initial_state, action) => {
         const item = state.products.find(
           (product) => product.id === action.payload.id
         );
+
+        
         // Check if Item is in cart already
 
         // if item is present in the cart then incart will return true else false
@@ -27,6 +30,7 @@ const hotelReducer = (state = initial_state, action) => {
           item.id === action.payload.id ? true : false
         );
 
+        
   // if item is in cart then we increment quantity else we will add new qty with respected id
         return {
           ...state,
@@ -38,6 +42,12 @@ const hotelReducer = (state = initial_state, action) => {
               )
             : [...state.cart, { ...item, qty: 1 }],
         };
+
+        case actionTypes.REMOVE_ALL_CART:
+          return {
+          ...state,
+          cart:[]
+          }
 
         // remove matched id
       case actionTypes.REMOVE_ITEM_QTY:
@@ -59,9 +69,13 @@ const hotelReducer = (state = initial_state, action) => {
           ...state,
           currentItem: action.payload,
         };
-      default:
+
+     
+
+        default:
         return state;
     }
+    
   };
   
 

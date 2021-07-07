@@ -2,6 +2,8 @@ import React , {useState}from 'react';
 import Product from './Product/Product';
 import './Products.css'
 import { connect } from 'react-redux'
+import NavBar from "./../../Components/NavBar/NavBar"
+
 
 const Products = ({ products }) => {
     
@@ -12,6 +14,8 @@ const Products = ({ products }) => {
 
     return(
         <>
+        <NavBar></NavBar> 
+    
         <div className='filter label'>
     
         <select  className='dropdown dropdown-content' onChange={(e) => {

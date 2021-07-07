@@ -4,8 +4,10 @@ import { connect } from 'react-redux'
 import styles from './Cart.module.css'
 import CartItem from './CartItem/CartItem'
 import { Link } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar'
+import { removeAllItems } from '../../redux/Hotel/hotel-action';
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart , removeAllItems}) => {
     const [totalPrice , setTotalPrice ] = useState(0)
     const [totalItem , setTotalItems ] = useState(0)
 
@@ -23,6 +25,8 @@ const Cart = ({ cart }) => {
     },[cart , totalItem,totalPrice , setTotalPrice, setTotalItems])
     console.log(cart)
     return(
+      <>
+      <NavBar></NavBar>
         <div className={styles.cart}>
       <div className={styles.cart__items}>
         {cart.map((item) => (
@@ -36,12 +40,13 @@ const Cart = ({ cart }) => {
           <span>$ {totalPrice}</span>
         </div>
         <Link to='/checkout'>
-        <button className={styles.summary__checkoutBtn}>
+        <button  className={styles.summary__checkoutBtn}>
         Proceed To Checkout
         </button>
         </Link>
       </div>
     </div>
+    </>
     )
 }
 
@@ -50,5 +55,7 @@ const mapStateToProps = (state) => {
         cart : state.hotel.cart,
     }
 }
+  
+  
 
 export default connect(mapStateToProps)(Cart)

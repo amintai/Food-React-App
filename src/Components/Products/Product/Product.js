@@ -1,17 +1,19 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './Product.css'
-
+import  './../Product/Product.css'
+import NavBar from './../../NavBar/NavBar'
 import {connect} from 'react-redux';
 import { addToCart  , loadCurrentItem } from './../../../redux/Hotel/hotel-action'
 
 const Product = ({productData , addToCart , loadCurrentItem }) => {
     return(
+        <>
+       
         <div className='product'>
             <img className='product__image' src={productData.image} alt='product image'/>
 
-            <div className='product__details'>
+            <div style={{color:"black"}} className='product__details'>
                 <p className='details__title'>{productData.title}</p>
                 <p className='details__desc'>{productData.description}</p>
                 <p className='details__price'> Price : $ {productData.price}</p>
@@ -29,6 +31,7 @@ const Product = ({productData , addToCart , loadCurrentItem }) => {
                 </button>
             </div>
         </div>
+        </>
     )
 }
 
