@@ -40,9 +40,7 @@ function App({ currentItem }) {
             <Route exact path='/product/:id' component={SingleItem} />
           )
         }
-
-        
-        
+          
       </Switch>
       </div>
       </Router>

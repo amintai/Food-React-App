@@ -55,6 +55,7 @@ const hotelReducer = (state = initial_state, action) => {
           ...state,
           cart: state.cart.filter((item) => item.id !== action.payload.id),
         };
+
       case actionTypes.ADJUST_ITEM_QTY:
         return {
           ...state,

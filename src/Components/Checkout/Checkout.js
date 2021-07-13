@@ -5,12 +5,14 @@ import styles from './../Checkout/Checkout.module.css'
 import {Link} from 'react-router-dom';
 import { db } from '../../Firebase';
 import NavBar from '../NavBar/NavBar';
-import { removeAllItems } from '../../redux/Hotel/hotel-action';
+import { removeAllItems, removeFromCart } from '../../redux/Hotel/hotel-action';
+import  ClearButton  from './../ClearButton/ClearButton'
 
-const Checkout = ({checkoutt,removeAllItems}) => {
+const Checkout = ({checkoutt }) => {
 
     const [totalPrice , setTotalPrice ] = useState(0)
     const [checkout,setCheckout] = useState(checkoutt);
+    console.log('remove',removeAllItems)
 
     useEffect(() => {
         let price = 0
@@ -67,9 +69,11 @@ const Checkout = ({checkoutt,removeAllItems}) => {
                 </div>
              ))
         }
+    
         <h1 className='text-center'>Grand Total :</h1>
-
-        <Link to='/thanks'> <p className='btn btn-primary text-center' onClick={()=> removeAllItems(),firebaseData}> Pay : {totalPrice} $ </p></Link>
+       <ClearButton price = {totalPrice}/>
+        {/* <button onClick={removeAllItems()}>Click Me</button> */}
+        {/* <Link to='/thanks'> <p className='btn btn-primary text-center' onClick={()=> firebaseData}> Pay : {totalPrice} $ </p></Link> */}
         </div>
         )
 }

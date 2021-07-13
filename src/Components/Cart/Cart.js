@@ -23,15 +23,19 @@ const Cart = ({ cart , removeAllItems}) => {
         setTotalItems(items)
         setTotalPrice(price)
     },[cart , totalItem,totalPrice , setTotalPrice, setTotalItems])
-    console.log(cart)
+    console.log('cart',cart)
+
     return(
       <>
+    
       <NavBar></NavBar>
-        <div className={styles.cart}>
+    {cart.length > 0 && (
+
+      <div className={styles.cart}>
       <div className={styles.cart__items}>
         {cart.map((item) => (
           <CartItem key={item.id} itemData={item} />
-        ))}
+          ))}
       </div>
       <div className={styles.cart__summary}>
         <h4 className={styles.summary__title}>Cart Summary</h4>
@@ -46,6 +50,10 @@ const Cart = ({ cart , removeAllItems}) => {
         </Link>
       </div>
     </div>
+          )}
+          {
+            cart.length === 0 && <h1>Your Cart is Empty 😥😪</h1>
+          }
     </>
     )
 }
